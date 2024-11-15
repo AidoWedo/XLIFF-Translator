@@ -120,9 +120,5 @@ Troubleshooting
     Logs:
         Use Developer Tools (Ctrl+Shift+I or Cmd+Option+I) to check for errors or logs.
 
-Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request with your changes. For major updates, open an issue first to discuss the proposed changes.
-License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
