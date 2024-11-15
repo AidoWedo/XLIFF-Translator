@@ -1,94 +1,128 @@
-XLIFF Translator Tool
+Translation Tools Application
 
-A desktop application built with Electron that translates XLIFF files into multiple languages using OpenAI's GPT model. The tool supports customizable languages, retains the original XML structure, and can handle complex, nested tags within <source> elements.
+This is a desktop application built using Electron.js that provides translation tools for XLIFF files and Caption files (SRT, WebVTT). It integrates with the OpenAI API for translation and supports multiple languages. The application also includes a settings section to manage API keys for seamless translation.
 Features
 
-    Translates content within <source> elements to <target> in specified languages.
-    Retains the original XML structure, ensuring compatibility with translation workflows.
-    Supports multiple languages, including French, Spanish, German, and more.
-    Easy toggling of debug logging for troubleshooting.
+    XLIFF Translator:
+        Translate .xlf or .xliff files into a variety of supported languages.
+        Automatically saves translated files with a language code appended to the file name.
 
-Prerequisites
+    Caption Translator:
+        Supports .srt and .vtt caption files for translation.
+        Saves translated captions with the same naming convention as XLIFF files.
 
-    Node.js and npm
-    An OpenAI API key (API access required)
-        For information on setting up an OpenAI API key, visit OpenAI's API Key Guide
-    Electron
+    API Key Management:
+        Allows users to input their OpenAI API key manually or select a .env or .txt file containing the key.
+        Stores the API key securely for use during translations.
 
-Setup
-Step 1: Clone the Repository
+    User-Friendly Interface:
+        Side menu for easy navigation between XLIFF Translator, Caption Translator, and Settings.
+        Responsive design and intuitive workflows.
 
-git clone https://github.com/your-username/xliff-translator-tool.git
-cd xliff-translator-tool
+    Language Support:
+        Supports multiple languages, including:
+            Arabic
+            Chinese (Simplified and Traditional)
+            Dutch
+            English
+            French
+            German
+            Hindi
+            Italian
+            Japanese
+            Korean
+            Portuguese
+            Russian
+            Spanish
+            Thai
+            Vietnamese
 
-Step 2: Install Dependencies
+Installation
+
+    Clone the Repository:
+
+git clone https://github.com/your-repo/translation-tools.git
+cd translation-tools
+
+Install Dependencies: Make sure you have Node.js installed, then run:
 
 npm install
 
-Step 3: Configure Environment Variables
+Start the Application:
 
-Create a .env file in the root directory and add your OpenAI API key:
-
-OPENAI_API_KEY=your_openai_api_key_here
-
-    For details on generating an API key, refer to OpenAI's API Key Guide.
-
-Step 4: Run the Application
-
-To start the Electron app:
-
-npm start
+    npm start
 
 Usage
+1. XLIFF Translator:
 
-    Select an XLIFF File: Click on the “Choose XLIFF File” button to load your .xliff or .xlf file.
-    Choose Target Language: Select a language from the dropdown list.
-    Translate: Click the “Translate” button to start the translation process.
-    View Translation Status: The tool will notify you upon successful completion and provide the path to the translated file.
+    Navigate to the "XLIFF Translator" tab.
+    Click "Choose XLIFF File" to select a .xlf or .xliff file.
+    Select the target language from the dropdown.
+    Click "Translate" to generate the translated file.
 
-The translated file will have the target language code appended to the original filename, e.g., filename-fr.xlf.
-Configuration
-1. Enable or Disable Debug Logging
+2. Caption Translator:
 
-To control logging, uncomment this
+    Navigate to the "Caption Translator" tab.
+    Click "Choose Caption File" to select a .srt or .vtt file.
+    Select the target language from the dropdown.
+    Click "Translate Captions" to generate the translated captions file.
 
-    /**
-     * win.webContents.openDevTools();
-     */
+3. API Key Configuration:
 
-2. Add More Languages
+    Navigate to the "Settings" tab.
+    Input your OpenAI API key manually in the text field, or select a .txt or .env file containing the key.
+    Click "Save API Key" to store the key securely.
 
-To add more languages, update the dropdown in index.html:
+File Naming Convention
 
-<select id="languageSelect">
-    <option value="fr">French</option>
-    <option value="es">Spanish</option>
-    <option value="de">German</option>
-    <option value="it">Italian</option>
-    <option value="pt">Portuguese</option>
-    <!-- Add more languages as needed -->
-</select>
+Translated files are saved with the original file name followed by the language code. For example:
 
-3. Modify API Request Parameters
+    Original file: example.xlf
+    Translated file: example-fr.xlf (for French)
 
-Adjust model versions or add retry limits in main.js:
+This convention is applied to both XLIFF and Caption files.
+Technologies Used
 
-model: "gpt-3.5-turbo"  // Change to "gpt-4" if available
+    Electron.js: For creating the desktop application.
+    HTML/CSS/JavaScript: For building the user interface.
+    OpenAI API: For translation services.
+
+Supported File Formats
+
+    XLIFF: .xlf, .xliff
+    Captions: .srt, .vtt
+
+Known Issues
+
+    Ensure the OpenAI API key is valid; invalid or expired keys will result in translation errors.
+    The application assumes the API key file contains only the key without additional text or formatting.
+
+Future Enhancements
+
+    Add support for batch processing of multiple files at once.
+    Improve error handling for invalid file formats and API responses.
+    Add functionality for customizing file naming conventions.
+    Expand language support based on OpenAI's capabilities.
 
 Troubleshooting
 
-    Rate Limit Errors: The tool uses exponential backoff to handle rate limits, but you may need to adjust the delay if requests are frequently throttled.
-    Missing Translations: The application attempts to capture nested text within <source> tags. If issues persist, verify the structure of your XLIFF file.
-    Console Logging: If debugging is required, enable logging by setting debug = true in main.js.
+    File Not Selected:
+        Ensure the file dialog opens properly and select a supported file format.
+
+    API Key Issues:
+        Verify the API key in the Settings tab.
+        Ensure you have adequate permissions for the OpenAI API.
+
+    Translation Fails:
+        Check your OpenAI usage limits.
+        Ensure your internet connection is stable.
+
+    Logs:
+        Use Developer Tools (Ctrl+Shift+I or Cmd+Option+I) to check for errors or logs.
 
 Contributing
 
-    Fork the repository.
-    Create a new branch: git checkout -b feature-branch.
-    Make your changes and test thoroughly.
-    Push to your branch: git push origin feature-branch.
-    Submit a pull request.
-
+Contributions are welcome! Please fork the repository and submit a pull request with your changes. For major updates, open an issue first to discuss the proposed changes.
 License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the LICENSE file for details.
